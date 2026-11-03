@@ -1,0 +1,2724 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Plataforma de orientación vocacional para estudiantes. Explora carreras y descubre tu perfil profesional."
+        content="junior josue callisaya mamani, brayan quispe chiara">
+
+    <meta name="author" content="Junior Josue,Brayan Q">
+
+    <title>Orientación Vocacional | Descubre tu Futuro</title>
+
+    <style>
+
+        /* =====================================================
+           CONFIGURACIÓN GENERAL
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #263238;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font-family: inherit;
+        }
+
+
+        /* =====================================================
+           VARIABLES DE DISEÑO
+        ===================================================== */
+
+        :root {
+            --azul-principal: #2563eb;
+            --azul-oscuro: #172554;
+            --azul-claro: #dbeafe;
+
+            --celeste: #06b6d4;
+            --verde: #10b981;
+            --amarillo: #f59e0b;
+            --rojo: #ef4444;
+            --morado: #8b5cf6;
+
+            --blanco: #ffffff;
+            --gris-claro: #f4f7fb;
+            --gris: #64748b;
+            --gris-oscuro: #334155;
+
+            --sombra:
+                0 10px 30px rgba(15, 23, 42, 0.10);
+
+            --sombra-hover:
+                0 15px 35px rgba(15, 23, 42, 0.18);
+
+            --radio: 16px;
+        }
+
+
+        /* =====================================================
+           BARRA SUPERIOR
+        ===================================================== */
+
+        .barra-superior {
+            background: var(--azul-oscuro);
+            color: white;
+            padding: 8px 5%;
+            font-size: 13px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .barra-superior span {
+            opacity: 0.9;
+        }
+
+        .imagenes-derecha {
+    margin-left: auto;
+    display: flex;
+    gap: 15px;
+}
+
+.imagen-extra {
+    width: 85px;
+    height: 105px;
+    object-fit: contain;
+}
+
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(255, 255, 255, 0.96);
+
+            backdrop-filter: blur(10px);
+
+            border-bottom: 1px solid #e2e8f0;
+
+            padding: 15px 5%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 30px;
+        }
+
+
+        /* LOGO */
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            color: var(--azul-oscuro);
+            font-weight: bold;
+            font-size: 19px;
+
+            white-space: nowrap;
+        }
+
+        .logo-icono {
+            width: 45px;
+            height: 45px;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--azul-principal),
+                    var(--celeste)
+                );
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 23px;
+
+            box-shadow:
+                0 5px 15px rgba(37, 99, 235, 0.25);
+        }
+
+
+        /* MENÚ */
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+            list-style: none;
+        }
+
+        .menu a {
+            display: block;
+
+            color: var(--gris-oscuro);
+
+            padding: 10px 13px;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            transition: 0.25s;
+        }
+
+        .menu a:hover {
+            color: var(--azul-principal);
+            background: var(--azul-claro);
+        }
+
+        .menu .boton-test {
+            background: var(--azul-principal);
+            color: white;
+            margin-left: 8px;
+        }
+
+        .menu .boton-test:hover {
+            background: #1d4ed8;
+            color: white;
+        }
+
+
+        /* =====================================================
+           BOTONES GENERALES
+        ===================================================== */
+
+        .btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 8px;
+
+            padding: 13px 22px;
+
+            border: none;
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            font-size: 15px;
+            font-weight: bold;
+
+            transition: 0.25s;
+
+            text-align: center;
+        }
+
+        .btn-principal {
+            background: var(--azul-principal);
+            color: white;
+
+            box-shadow:
+                0 8px 20px rgba(37, 99, 235, 0.25);
+        }
+
+        .btn-principal:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .btn-secundario {
+            background: white;
+            color: var(--azul-principal);
+
+            border: 2px solid var(--azul-principal);
+        }
+
+        .btn-secundario:hover {
+            background: var(--azul-claro);
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================================
+           HERO / PORTADA
+        ===================================================== */
+
+        .hero {
+            min-height: 620px;
+
+            padding: 80px 5%;
+
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+
+            align-items: center;
+
+            gap: 60px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eff6ff 0%,
+                    #ffffff 50%,
+                    #ecfeff 100%
+                );
+        }
+
+
+        /* DECORACIÓN */
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 450px;
+            height: 450px;
+
+            background: rgba(37, 99, 235, 0.07);
+
+            border-radius: 50%;
+
+            top: -200px;
+            right: -100px;
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            background: rgba(6, 182, 212, 0.06);
+
+            border-radius: 50%;
+
+            bottom: -150px;
+            left: -100px;
+        }
+
+
+        /* CONTENIDO HERO */
+
+        .hero-contenido {
+            position: relative;
+            z-index: 2;
+        }
+
+        .etiqueta {
+            display: inline-flex;
+
+            align-items: center;
+            gap: 8px;
+
+            background: var(--azul-claro);
+            color: var(--azul-principal);
+
+            padding: 7px 13px;
+
+            border-radius: 30px;
+
+            font-size: 13px;
+            font-weight: bold;
+
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 5vw, 64px);
+
+            line-height: 1.08;
+
+            color: var(--azul-oscuro);
+
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: var(--azul-principal);
+        }
+
+        .hero-texto {
+            max-width: 650px;
+
+            font-size: 18px;
+
+            color: var(--gris);
+
+            margin-bottom: 30px;
+        }
+
+        .hero-botones {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+
+            margin-bottom: 35px;
+        }
+
+
+        /* ESTADÍSTICAS */
+
+        .estadisticas {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 30px;
+        }
+
+        .estadistica {
+            display: flex;
+
+            flex-direction: column;
+        }
+
+        .estadistica strong {
+            color: var(--azul-oscuro);
+
+            font-size: 25px;
+        }
+
+        .estadistica span {
+            color: var(--gris);
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           TARJETA VISUAL DEL HERO
+        ===================================================== */
+
+        .hero-visual {
+            position: relative;
+
+            z-index: 2;
+
+            display: flex;
+            justify-content: center;
+        }
+
+        .panel-estudiante {
+            width: min(100%, 450px);
+
+            background: white;
+
+            border-radius: 25px;
+
+            padding: 28px;
+
+            box-shadow:
+                0 25px 60px rgba(15, 23, 42, 0.15);
+
+            border: 1px solid #e2e8f0;
+
+            position: relative;
+        }
+
+        .panel-cabecera {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 25px;
+        }
+
+        .panel-cabecera h3 {
+            color: var(--azul-oscuro);
+
+            font-size: 19px;
+        }
+
+        .estado {
+            display: flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            color: var(--verde);
+
+            font-size: 12px;
+
+            font-weight: bold;
+        }
+
+        .estado::before {
+            content: "";
+
+            width: 8px;
+            height: 8px;
+
+            border-radius: 50%;
+
+            background: var(--verde);
+        }
+
+
+        /* PERFIL */
+
+        .perfil {
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 18px;
+
+            background: #f8fafc;
+
+            border-radius: 15px;
+
+            margin-bottom: 20px;
+        }
+
+        .perfil-icono {
+            width: 55px;
+            height: 55px;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--azul-principal),
+                    var(--celeste)
+                );
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 25px;
+        }
+
+        .perfil-info strong {
+            display: block;
+
+            color: var(--azul-oscuro);
+        }
+
+        .perfil-info span {
+            color: var(--gris);
+
+            font-size: 13px;
+        }
+
+
+        /* BARRAS DE AFINIDAD */
+
+        .afinidad {
+            margin-top: 18px;
+        }
+
+        .afinidad-cabecera {
+            display: flex;
+
+            justify-content: space-between;
+
+            font-size: 13px;
+
+            margin-bottom: 7px;
+        }
+
+        .afinidad-cabecera strong {
+            color: var(--gris-oscuro);
+        }
+
+        .afinidad-cabecera span {
+            font-weight: bold;
+
+            color: var(--azul-principal);
+        }
+
+        .barra {
+            height: 9px;
+
+            background: #e2e8f0;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+        .barra-progreso {
+            height: 100%;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--azul-principal),
+                    var(--celeste)
+                );
+        }
+
+        .progreso-90 {
+            width: 90%;
+        }
+
+        .progreso-75 {
+            width: 75%;
+        }
+
+        .progreso-62 {
+            width: 62%;
+        }
+
+
+        /* =====================================================
+           SECCIONES GENERALES
+        ===================================================== */
+
+        .seccion {
+            padding: 85px 5%;
+        }
+
+        .seccion-blanca {
+            background: white;
+        }
+
+        .seccion-cabecera {
+            max-width: 750px;
+
+            margin: 0 auto 45px;
+
+            text-align: center;
+        }
+
+        .seccion-cabecera .mini-titulo {
+            color: var(--azul-principal);
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 8px;
+        }
+
+        .seccion-cabecera h2 {
+            font-size: clamp(28px, 4vw, 42px);
+
+            line-height: 1.15;
+
+            color: var(--azul-oscuro);
+
+            margin-bottom: 15px;
+        }
+
+        .seccion-cabecera p {
+            color: var(--gris);
+
+            font-size: 16px;
+        }
+
+
+        /* =====================================================
+           SOBRE ORIENTACIÓN
+        ===================================================== */
+
+        .sobre-grid {
+            max-width: 1150px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 50px;
+
+            align-items: center;
+        }
+
+        .sobre-texto h3 {
+            color: var(--azul-oscuro);
+
+            font-size: 27px;
+
+            margin-bottom: 15px;
+        }
+
+        .sobre-texto p {
+            color: var(--gris);
+
+            margin-bottom: 18px;
+        }
+
+        .lista-beneficios {
+            list-style: none;
+
+            display: grid;
+
+            gap: 13px;
+        }
+
+        .lista-beneficios li {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 10px;
+
+            color: var(--gris-oscuro);
+        }
+
+        .check {
+            width: 25px;
+            height: 25px;
+
+            flex-shrink: 0;
+
+            border-radius: 50%;
+
+            background: #dcfce7;
+
+            color: var(--verde);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+
+        /* TARJETA SOBRE */
+
+        .sobre-card {
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--azul-oscuro),
+                    #1e40af
+                );
+
+            border-radius: 25px;
+
+            padding: 35px;
+
+            color: white;
+
+            box-shadow:
+                var(--sombra);
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .sobre-card::after {
+            content: "🎓";
+
+            position: absolute;
+
+            font-size: 150px;
+
+            opacity: 0.08;
+
+            right: -20px;
+
+            bottom: -35px;
+        }
+
+        .sobre-card h3 {
+            font-size: 24px;
+
+            margin-bottom: 15px;
+        }
+
+        .sobre-card p {
+            opacity: 0.85;
+
+            margin-bottom: 25px;
+        }
+
+        .sobre-card-items {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 12px;
+        }
+
+        .sobre-item {
+            background: rgba(255,255,255,0.1);
+
+            border: 1px solid rgba(255,255,255,0.12);
+
+            padding: 15px;
+
+            border-radius: 12px;
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           ÁREAS PROFESIONALES
+        ===================================================== */
+
+        .areas-grid {
+            max-width: 1200px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+        .area-card {
+            background: white;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: var(--radio);
+
+            padding: 25px;
+
+            transition: 0.3s;
+
+            cursor: pointer;
+        }
+
+        .area-card:hover {
+            transform: translateY(-6px);
+
+            box-shadow: var(--sombra-hover);
+
+            border-color: #bfdbfe;
+        }
+
+        .area-icono {
+            width: 55px;
+            height: 55px;
+
+            border-radius: 14px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 26px;
+
+            margin-bottom: 18px;
+        }
+
+        .icono-azul {
+            background: #dbeafe;
+        }
+
+        .icono-verde {
+            background: #dcfce7;
+        }
+
+        .icono-morado {
+            background: #ede9fe;
+        }
+
+        .icono-amarillo {
+            background: #fef3c7;
+        }
+
+        .area-card h3 {
+            color: var(--azul-oscuro);
+
+            margin-bottom: 8px;
+
+            font-size: 18px;
+        }
+
+        .area-card p {
+            color: var(--gris);
+
+            font-size: 14px;
+
+            margin-bottom: 15px;
+        }
+
+        .area-card a {
+            color: var(--azul-principal);
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+
+        /* =====================================================
+           CONTENEDOR DE CARRERAS
+        ===================================================== */
+
+        .carreras-container {
+            max-width: 1200px;
+
+            margin: auto;
+        }
+
+        .carreras-intro {
+            text-align: center;
+
+            max-width: 700px;
+
+            margin: 0 auto 35px;
+
+            color: var(--gris);
+        }
+
+        .carreras-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .carrera-card {
+            background: white;
+
+            border-radius: var(--radio);
+
+            border: 1px solid #e2e8f0;
+
+            padding: 24px;
+
+            transition: 0.3s;
+        }
+
+        .carrera-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow: var(--sombra-hover);
+        }
+
+        .carrera-card-top {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-start;
+
+            margin-bottom: 15px;
+        }
+
+        .carrera-card-icono {
+            font-size: 35px;
+        }
+
+        .nivel {
+            background: #f1f5f9;
+
+            color: var(--gris);
+
+            padding: 5px 9px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            font-weight: bold;
+        }
+
+        .carrera-card h3 {
+            color: var(--azul-oscuro);
+
+            font-size: 18px;
+
+            margin-bottom: 8px;
+        }
+
+        .carrera-card p {
+            color: var(--gris);
+
+            font-size: 14px;
+
+            margin-bottom: 15px;
+        }
+
+        .tags {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 6px;
+        }
+
+        .tag {
+            background: var(--azul-claro);
+
+            color: var(--azul-principal);
+
+            padding: 4px 8px;
+
+            border-radius: 6px;
+
+            font-size: 11px;
+
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           SECCIÓN DE LLAMADA AL TEST
+        ===================================================== */
+
+        .cta {
+            max-width: 1100px;
+
+            margin: 0 auto;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #172554,
+                    #1d4ed8,
+                    #0891b2
+                );
+
+            border-radius: 25px;
+
+            padding: 55px;
+
+            color: white;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 35px;
+
+            overflow: hidden;
+
+            position: relative;
+        }
+
+        .cta::after {
+            content: "🧠";
+
+            position: absolute;
+
+            font-size: 170px;
+
+            opacity: 0.08;
+
+            right: 30px;
+
+            bottom: -55px;
+        }
+
+        .cta-contenido {
+            position: relative;
+
+            z-index: 2;
+        }
+
+        .cta h2 {
+            font-size: 34px;
+
+            margin-bottom: 10px;
+        }
+
+        .cta p {
+            opacity: 0.85;
+
+            max-width: 650px;
+        }
+
+        .cta .btn {
+            position: relative;
+
+            z-index: 3;
+
+            background: white;
+
+            color: var(--azul-principal);
+
+            flex-shrink: 0;
+        }
+
+
+        /* =====================================================
+           TEST VOCACIONAL
+        ===================================================== */
+
+        #test {
+            background: #f8fafc;
+        }
+
+        .test-contenedor {
+            max-width: 900px;
+
+            margin: auto;
+        }
+
+        .test-introduccion {
+            background: white;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 20px;
+
+            padding: 30px;
+
+            margin-bottom: 30px;
+
+            box-shadow: var(--sombra);
+        }
+
+        .test-introduccion h3 {
+            color: var(--azul-oscuro);
+
+            margin-bottom: 10px;
+        }
+
+        .test-introduccion p {
+            color: var(--gris);
+
+            margin-bottom: 15px;
+        }
+
+        .test-info {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 12px;
+        }
+
+        .test-info-item {
+            padding: 15px;
+
+            background: #f8fafc;
+
+            border-radius: 10px;
+
+            text-align: center;
+        }
+
+        .test-info-item strong {
+            display: block;
+
+            color: var(--azul-principal);
+
+            font-size: 20px;
+        }
+
+        .test-info-item span {
+            color: var(--gris);
+
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           ENCUESTA
+        ===================================================== */
+
+        .encuesta {
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 35px;
+
+            border: 1px solid #e2e8f0;
+
+            box-shadow: var(--sombra);
+        }
+
+        .barra-test {
+            margin-bottom: 30px;
+        }
+
+        .barra-test-cabecera {
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-bottom: 8px;
+
+            font-size: 13px;
+
+            color: var(--gris);
+        }
+
+        .barra-test-fondo {
+            width: 100%;
+
+            height: 9px;
+
+            background: #e2e8f0;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+        .barra-test-progreso {
+            width: 0%;
+
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--azul-principal),
+                    var(--celeste)
+                );
+
+            border-radius: 20px;
+
+            transition: width 0.4s ease;
+        }
+
+
+        /* PREGUNTA */
+
+        .pregunta {
+            display: none;
+
+            animation: aparecer 0.35s ease;
+        }
+
+        .pregunta.activa {
+            display: block;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateX(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .numero-pregunta {
+            display: inline-block;
+
+            background: var(--azul-claro);
+
+            color: var(--azul-principal);
+
+            padding: 6px 10px;
+
+            border-radius: 8px;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            margin-bottom: 15px;
+        }
+
+        .pregunta h3 {
+            color: var(--azul-oscuro);
+
+            font-size: 24px;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* OPCIONES */
+
+        .opciones {
+            display: grid;
+
+            gap: 12px;
+        }
+
+        .opcion {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 17px;
+
+            border: 2px solid #e2e8f0;
+
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+            color: var(--gris-oscuro);
+        }
+
+        .opcion:hover {
+            border-color: #93c5fd;
+
+            background: #eff6ff;
+        }
+
+        .opcion input {
+            accent-color: var(--azul-principal);
+
+            width: 18px;
+            height: 18px;
+
+            flex-shrink: 0;
+        }
+
+        .opcion.seleccionada {
+            border-color: var(--azul-principal);
+
+            background: #eff6ff;
+
+            color: var(--azul-oscuro);
+        }
+
+
+        /* CONTROLES TEST */
+
+        .controles-test {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-top: 30px;
+
+            padding-top: 25px;
+
+            border-top: 1px solid #e2e8f0;
+        }
+
+
+        /* =====================================================
+           RESULTADOS
+        ===================================================== */
+
+        .resultado {
+            display: none;
+
+            margin-top: 30px;
+
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 40px;
+
+            border: 1px solid #e2e8f0;
+
+            box-shadow: var(--sombra);
+        }
+
+        .resultado.visible {
+            display: block;
+        }
+
+        .resultado-cabecera {
+            text-align: center;
+
+            margin-bottom: 35px;
+        }
+
+        .resultado-icono {
+            width: 80px;
+            height: 80px;
+
+            margin: 0 auto 15px;
+
+            border-radius: 50%;
+
+            background: #dbeafe;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 40px;
+        }
+
+        .resultado-cabecera h2 {
+            color: var(--azul-oscuro);
+
+            font-size: 32px;
+
+            margin-bottom: 8px;
+        }
+
+        .resultado-cabecera p {
+            color: var(--gris);
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 1000px) {
+
+            .hero {
+                grid-template-columns: 1fr;
+
+                text-align: center;
+            }
+
+            .hero-texto {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-botones,
+            .estadisticas {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                max-width: 550px;
+
+                margin: auto;
+            }
+
+            .areas-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .carreras-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .sobre-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta {
+                flex-direction: column;
+
+                text-align: center;
+            }
+        }
+
+
+        @media (max-width: 750px) {
+
+            .barra-superior {
+                justify-content: center;
+
+                text-align: center;
+            }
+
+            .navbar {
+                flex-direction: column;
+
+                gap: 12px;
+            }
+
+            .menu {
+                width: 100%;
+
+                justify-content: center;
+
+                flex-wrap: wrap;
+            }
+
+            .menu .boton-test {
+                margin-left: 0;
+            }
+
+            .hero {
+                padding-top: 60px;
+
+                min-height: auto;
+            }
+
+            .seccion {
+                padding: 60px 5%;
+            }
+
+            .areas-grid,
+            .carreras-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .test-info {
+                grid-template-columns: 1fr;
+            }
+
+            .encuesta {
+                padding: 25px 18px;
+            }
+
+            .cta {
+                padding: 35px 25px;
+            }
+
+            .sobre-card-items {
+                grid-template-columns: 1fr;
+            }
+
+            .controles-test {
+                flex-direction: column-reverse;
+            }
+
+            .controles-test .btn {
+                width: 100%;
+            }
+        }
+
+
+        @media (max-width: 480px) {
+
+            .logo {
+                font-size: 16px;
+            }
+
+            .logo-icono {
+                width: 40px;
+                height: 40px;
+            }
+
+            .hero h1 {
+                font-size: 37px;
+            }
+
+            .hero-texto {
+                font-size: 16px;
+            }
+
+            .estadisticas {
+                gap: 20px;
+            }
+
+            .panel-estudiante {
+                padding: 20px;
+            }
+
+            .seccion-cabecera h2 {
+                font-size: 29px;
+            }
+
+            .pregunta h3 {
+                font-size: 21px;
+            }
+
+        }
+
+    
+        /* Mejoras de accesibilidad, resultados y pantallas pequeñas */
+        .opcion { cursor: pointer; transition: border-color .2s, background .2s, transform .2s; }
+        .opcion:hover { border-color: var(--azul-principal); background: #eff6ff; }
+        .opcion:has(input:checked) { border-color: var(--azul-principal); background: #eff6ff; box-shadow: 0 0 0 2px rgba(37,99,235,.10); }
+        .opcion input { accent-color: var(--azul-principal); }
+        .pregunta h3 { line-height: 1.5; }
+        .resultado { display: none; margin-top: 28px; }
+        .resultado.mostrar { display: block; }
+        .resultado-cuerpo { padding: 26px; }
+        .resultado-area { background: #eff6ff; border-radius: 14px; padding: 18px; margin: 14px 0; }
+        .resultado-carreras { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; margin: 18px 0; }
+        .resultado-carrera { padding: 16px; border: 1px solid #dbeafe; border-radius: 12px; background: white; }
+        .resultado-carrera h4 { margin-bottom: 7px; color: var(--azul-oscuro); }
+        .resultado-acciones { display:flex; flex-wrap:wrap; gap:12px; margin-top:22px; }
+        .mensaje-error { color:#b91c1c; margin:12px 0 0; font-weight:600; }
+        .btn:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid #f59e0b; outline-offset: 3px; }
+        @media (max-width: 520px) {
+            .resultado-carreras { grid-template-columns: 1fr; }
+            .resultado-cuerpo { padding: 18px; }
+            .test-introduccion { padding: 22px 18px; }
+            .barra-test-cabecera { gap: 10px; font-size: 13px; }
+            .opcion { align-items: flex-start; }
+        }
+
+        /* Fichas ampliadas de carreras */
+        .carrera-detalles { margin-top: 18px; border-top: 1px solid #e2e8f0; padding-top: 14px; }
+        .carrera-detalles summary { color: var(--azul-principal); font-weight: 700; cursor: pointer; font-size: 14px; list-style-position: inside; }
+        .carrera-detalles summary:hover { color: var(--azul-oscuro); }
+        .carrera-info { padding-top: 12px; }
+        .carrera-info h4 { color: var(--azul-oscuro); font-size: 14px; margin: 12px 0 4px; }
+        .carrera-info p { color: var(--gris); font-size: 13px; line-height: 1.65; margin: 0 0 8px; }
+
+
+        /* INSTITUCIONES EDUCATIVAS */
+        .instituciones-grid { max-width: 1200px; margin: auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+        .institucion-card { background: #fff; border: 1px solid #e2e8f0; border-radius: var(--radio); padding: 28px; box-shadow: 0 8px 24px rgba(15, 23, 42, .06); display: flex; flex-direction: column; align-items: flex-start; transition: transform .25s, box-shadow .25s; }
+        .institucion-card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(15, 23, 42, .10); }
+        .institucion-icono { width: 58px; height: 58px; border-radius: 16px; background: #eff6ff; display: flex; align-items: center; justify-content: center; font-size: 29px; margin-bottom: 18px; }
+        .institucion-card h3 { color: var(--azul-oscuro); font-size: 19px; line-height: 1.4; margin-bottom: 10px; }
+        .institucion-card p { color: var(--gris); font-size: 14px; line-height: 1.7; margin-bottom: 20px; flex: 1; }
+        .institucion-enlace { display: inline-flex; align-items: center; gap: 8px; background: var(--azul-principal); color: white; padding: 11px 16px; border-radius: 10px; font-weight: 700; font-size: 14px; text-decoration: none; transition: background .2s; }
+        .institucion-enlace:hover { background: var(--azul-oscuro); }
+        @media (max-width: 900px) { .instituciones-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (max-width: 600px) { .instituciones-grid { grid-template-columns: 1fr; } }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         BARRA SUPERIOR
+    ====================================================== -->
+
+    <div class="barra-superior">
+
+        <span>
+            🎓 Plataforma educativa de orientación vocacional
+        </span>
+
+        <span>
+            📚 Conoce tus habilidades · Explora tu futuro
+        </span>
+
+         <span>
+            👥 Junior Josue Callisaya Mamani, Brayan Quispe Chiara
+        </span>
+        <div class="imagenes-derecha">
+            <!-- Logo en el Navbar -->
+         <img src="img/logotipo.cubano.jpg" alt="Logo" class="imagen-extra">
+
+           <!-- Foto de Junior Josue -->
+         <img src="img/callisya.jr.jpg" alt="Junior Josue" class="imagen-extra">
+
+         <!-- Foto de Brayan Quispe -->
+         <img src="img/brian.qsp.jpg" alt="Brayan Quispe" class="imagen-extra">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         NAVEGACIÓN
+    ====================================================== -->
+
+    <nav class="navbar">
+
+        <a href="#inicio" class="logo">
+
+            <span class="logo-icono">
+                🎓
+            </span>
+
+            <span>
+                Orienta<span style="color:#2563eb;">Futuro</span>
+            </span>
+
+        </a>
+
+
+        <ul class="menu">
+
+            <li>
+                <a href="#inicio">
+                    Inicio
+                </a>
+            </li>
+
+            <li>
+                <a href="#orientacion">
+                    Orientación
+                </a>
+            </li>
+
+            <li>
+                <a href="#areas">
+                    Áreas
+                </a>
+            </li>
+
+            <li>
+                <a href="#carreras">
+                    Carreras
+                </a>
+            </li>
+
+            <li>
+                <a href="#instituciones">
+                    Instituciones
+                </a>
+            </li>
+
+            <li>
+                <a href="#test" class="boton-test">
+                    🧠 Realizar Test
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         INICIO / HERO
+    ====================================================== -->
+
+    <header id="inicio" class="hero">
+
+        <div class="hero-contenido">
+
+            <div class="etiqueta">
+                ✨ Descubre tu potencial
+            </div>
+
+
+            <h1>
+                Encuentra la carrera
+                <span>que encaja contigo.</span>
+            </h1>
+
+
+            <p class="hero-texto">
+
+                Conoce tus intereses, identifica tus habilidades y
+                explora diferentes opciones profesionales mediante
+                nuestro test de orientación vocacional.
+
+            </p>
+
+
+            <div class="hero-botones">
+
+                <a href="#test" class="btn btn-principal">
+                    🧠 Comenzar test
+                </a>
+
+                <a href="#carreras" class="btn btn-secundario">
+                    📚 Explorar carreras
+                </a>
+
+            </div>
+
+
+            <div class="estadisticas">
+
+                <div class="estadistica">
+                    <strong>24</strong>
+                    <span>Preguntas</span>
+                </div>
+
+                <div class="estadistica">
+                    <strong>8</strong>
+                    <span>Áreas profesionales</span>
+                </div>
+
+                <div class="estadistica">
+                    <strong>9+</strong>
+                    <span>Carreras</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PANEL VISUAL -->
+
+        <div class="hero-visual">
+
+            <div class="panel-estudiante">
+
+                <div class="panel-cabecera">
+
+                    <h3>
+                        Tu perfil profesional
+                    </h3>
+
+                    <span class="estado">
+                        Test preparado
+                    </span>
+
+                </div>
+
+
+                <div class="perfil">
+
+                    <div class="perfil-icono">
+                        🧑‍🎓
+                    </div>
+
+                    <div class="perfil-info">
+
+                        <strong>
+                            Descubre tus fortalezas
+                        </strong>
+
+                        <span>
+                            Analizaremos tus respuestas
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="afinidad">
+
+                    <div class="afinidad-cabecera">
+                        <strong>💻 Tecnología</strong>
+                        <span>90%</span>
+                    </div>
+
+                    <div class="barra">
+                        <div class="barra-progreso progreso-90"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="afinidad">
+
+                    <div class="afinidad-cabecera">
+                        <strong>⚙️ Ingeniería</strong>
+                        <span>75%</span>
+                    </div>
+
+                    <div class="barra">
+                        <div class="barra-progreso progreso-75"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="afinidad">
+
+                    <div class="afinidad-cabecera">
+                        <strong>📈 Negocios</strong>
+                        <span>62%</span>
+                    </div>
+
+                    <div class="barra">
+                        <div class="barra-progreso progreso-62"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         SECCIÓN SOBRE ORIENTACIÓN
+    ====================================================== -->
+
+    <section id="orientacion" class="seccion seccion-blanca">
+
+        <div class="seccion-cabecera">
+
+            <div class="mini-titulo">
+                Orientación vocacional
+            </div>
+
+            <h2>
+                Una decisión importante comienza con conocerte.
+            </h2>
+
+            <p>
+                Antes de elegir una carrera es importante comprender
+                qué te interesa, cuáles son tus fortalezas y qué tipo
+                de actividades disfrutas realizar.
+            </p>
+
+        </div>
+
+
+        <div class="sobre-grid">
+
+            <div class="sobre-texto">
+
+                <h3>
+                    ¿Qué encontrarás en esta plataforma?
+                </h3>
+
+                <p>
+                    Esta plataforma está diseñada para ayudarte a
+                    explorar diferentes caminos profesionales.
+                    El resultado del test funciona como una orientación
+                    inicial y no reemplaza la evaluación de un orientador
+                    vocacional profesional.
+                </p>
+
+
+                <ul class="lista-beneficios">
+
+                    <li>
+                        <span class="check">✓</span>
+                        Identificar tus principales intereses.
+                    </li>
+
+                    <li>
+                        <span class="check">✓</span>
+                        Reconocer habilidades y fortalezas.
+                    </li>
+
+                    <li>
+                        <span class="check">✓</span>
+                        Explorar áreas profesionales.
+                    </li>
+
+                    <li>
+                        <span class="check">✓</span>
+                        Conocer carreras relacionadas con tu perfil.
+                    </li>
+
+                    <li>
+                        <span class="check">✓</span>
+                        Recibir una orientación basada en tus respuestas.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="sobre-card">
+
+                <h3>
+                    ¿Cómo funciona?
+                </h3>
+
+                <p>
+                    El sistema analizará diferentes aspectos de tu
+                    perfil para encontrar las áreas profesionales
+                    que presentan mayor afinidad contigo.
+                </p>
+
+
+                <div class="sobre-card-items">
+
+                    <div class="sobre-item">
+                        🧠
+                        <br>
+                        <strong>Intereses</strong>
+                    </div>
+
+                    <div class="sobre-item">
+                        💡
+                        <br>
+                        <strong>Habilidades</strong>
+                    </div>
+
+                    <div class="sobre-item">
+                        🧑‍🤝‍🧑
+                        <br>
+                        <strong>Personalidad</strong>
+                    </div>
+
+                    <div class="sobre-item">
+                        🎯
+                        <br>
+                        <strong>Preferencias</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ÁREAS PROFESIONALES
+    ====================================================== -->
+
+    <section id="areas" class="seccion">
+
+        <div class="seccion-cabecera">
+
+            <div class="mini-titulo">
+                Explora
+            </div>
+
+            <h2>
+                Principales áreas profesionales
+            </h2>
+
+            <p>
+                Conoce diferentes campos de estudio y descubre qué
+                área puede relacionarse mejor con tus intereses.
+            </p>
+
+        </div>
+
+
+        <div class="areas-grid">
+
+
+            <!-- TECNOLOGÍA -->
+
+            <div class="area-card">
+
+                <div class="area-icono icono-azul">
+                    💻
+                </div>
+
+                <h3>
+                    Tecnología e Informática
+                </h3>
+
+                <p>
+                    Programación, software, inteligencia artificial,
+                    datos y tecnología digital.
+                </p>
+
+                <a href="#carreras">
+                    Ver carreras →
+                </a>
+
+            </div>
+
+
+            <!-- SALUD -->
+
+            <div class="area-card">
+
+                <div class="area-icono icono-verde">
+                    🏥
+                </div>
+
+                <h3>
+                    Ciencias de la Salud
+                </h3>
+
+                <p>
+                    Profesiones relacionadas con el cuidado,
+                    prevención y bienestar de las personas.
+                </p>
+
+                <a href="#carreras">
+                    Ver carreras →
+                </a>
+
+            </div>
+
+
+            <!-- INGENIERÍA -->
+
+            <div class="area-card">
+
+                <div class="area-icono icono-morado">
+                    ⚙️
+                </div>
+
+                <h3>
+                    Ingenierías
+                </h3>
+
+                <p>
+                    Diseño, construcción, industria, energía,
+                    tecnología y resolución de problemas.
+                </p>
+
+                <a href="#carreras">
+                    Ver carreras →
+                </a>
+
+            </div>
+
+
+            <!-- NEGOCIOS -->
+
+            <div class="area-card">
+
+                <div class="area-icono icono-amarillo">
+                    📈
+                </div>
+
+                <h3>
+                    Administración y Negocios
+                </h3>
+
+                <p>
+                    Empresas, economía, marketing, finanzas,
+                    liderazgo y emprendimiento.
+                </p>
+
+                <a href="#carreras">
+                    Ver carreras →
+                </a>
+
+            </div>
+
+
+            <!-- ARTE -->
+
+            <div class="area-card">
+
+                <div class="area-icono icono-morado">
+                    🎨
+                </div>
+
+                <h3>
+                    Arte y Diseño
+                </h3>
+
+                <p>
+                    Creatividad, diseño gráfico, arquitectura,
+                    comunicación y producción audiovisual.
+                </p>
+
+                <a href="#carreras">
+                    Ver carreras →
+                </a>
+
+            </div>
+
+
+            <!-- SOCIALES -->
+
+            <div class="area-card">
+
+                <div class="area-icono icono-azul">
+                    ⚖️
+                </div>
+
+                <h3>
+                    Ciencias Sociales y Derecho
+                </h3>
+
+                <p>
+                    Sociedad, leyes, comunicación, investigación
+                    y comportamiento humano.
+                </p>
+
+                <a href="#carreras">
+                    Ver carreras →
+                </a>
+
+            </div>
+
+
+            <!-- NATURALES -->
+
+            <div class="area-card">
+
+                <div class="area-icono icono-verde">
+                    🌱
+                </div>
+
+                <h3>
+                    Ciencias Naturales
+                </h3>
+
+                <p>
+                    Naturaleza, animales, medio ambiente,
+                    investigación y recursos naturales.
+                </p>
+
+                <a href="#carreras">
+                    Ver carreras →
+                </a>
+
+            </div>
+
+
+            <!-- EDUCACIÓN -->
+
+            <div class="area-card">
+
+                <div class="area-icono icono-amarillo">
+                    👩‍🏫
+                </div>
+
+                <h3>
+                    Educación y Humanidades
+                </h3>
+
+                <p>
+                    Enseñanza, idiomas, literatura, historia,
+                    filosofía y desarrollo humano.
+                </p>
+
+                <a href="#carreras">
+                    Ver carreras →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         LLAMADA A EXPLORAR
+    ====================================================== -->
+
+    <section class="seccion seccion-blanca">
+
+        <div class="cta">
+
+            <div class="cta-contenido">
+
+                <h2>
+                    ¿No sabes qué carrera elegir?
+                </h2>
+
+                <p>
+                    No te preocupes. Responde nuestro cuestionario
+                    vocacional y conoce las áreas profesionales que
+                    presentan mayor afinidad con tu perfil.
+                </p>
+
+            </div>
+
+            <a href="#test" class="btn">
+                Comenzar ahora →
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CARRERAS
+         
+         EN LA PARTE 2 SE AGREGARÁN MUCHAS MÁS CARRERAS
+    ====================================================== -->
+
+    <section id="carreras" class="seccion">
+        <div class="seccion-cabecera">
+            <div class="mini-titulo">Conoce las opciones</div>
+            <h2>Explora diferentes carreras</h2>
+            <p>Conoce distintas opciones profesionales y descubre cuáles podrían relacionarse con tus intereses.</p>
+        </div>
+        <div class="carreras-container">
+            <div class="carreras-grid">
+                <div class="carrera-card"><div class="carrera-card-top"><span class="carrera-card-icono">💻</span><span class="nivel">Tecnología</span></div><h3>Ingeniería de Sistemas</h3><p>Desarrollo de software, aplicaciones y soluciones tecnológicas.</p><div class="tags"><span class="tag">Lógica</span><span class="tag">Programación</span></div><details class="carrera-detalles"><summary>Más información sobre la carrera</summary><div class="carrera-info"><h4>¿Qué se estudia?</h4><p>Programación, algoritmos, bases de datos, desarrollo web, redes y seguridad informática.</p><h4>Habilidades útiles</h4><p>Pensamiento lógico, creatividad, paciencia y resolución de problemas.</p><h4>¿Dónde puedes trabajar?</h4><p>Empresas tecnológicas, bancos, instituciones públicas o emprendimientos digitales.</p><h4>¿Para quién puede ser adecuada?</h4><p>Para quienes disfrutan las computadoras, crear aplicaciones y encontrar soluciones técnicas.</p></div></details></div>
+                <div class="carrera-card"><div class="carrera-card-top"><span class="carrera-card-icono">🩺</span><span class="nivel">Salud</span></div><h3>Medicina</h3><p>Prevención, diagnóstico y tratamiento de enfermedades.</p><div class="tags"><span class="tag">Biología</span><span class="tag">Servicio</span></div><details class="carrera-detalles"><summary>Más información sobre la carrera</summary><div class="carrera-info"><h4>¿Qué se estudia?</h4><p>Anatomía, fisiología, biología, diagnóstico, prevención y tratamiento de enfermedades.</p><h4>Habilidades útiles</h4><p>Empatía, observación, disciplina, comunicación y aprendizaje continuo.</p><h4>¿Dónde puedes trabajar?</h4><p>Hospitales, clínicas, centros de salud e investigación, según la formación y habilitación.</p><h4>¿Para quién puede ser adecuada?</h4><p>Para quienes se interesan por el cuerpo humano y desean contribuir al cuidado de la salud.</p></div></details></div>
+                <div class="carrera-card"><div class="carrera-card-top"><span class="carrera-card-icono">🏗️</span><span class="nivel">Ingeniería</span></div><h3>Ingeniería Civil</h3><p>Diseño y construcción de edificios, carreteras y puentes.</p><div class="tags"><span class="tag">Matemáticas</span><span class="tag">Diseño</span></div><details class="carrera-detalles"><summary>Más información sobre la carrera</summary><div class="carrera-info"><h4>¿Qué se estudia?</h4><p>Matemáticas, física, estructuras, topografía, materiales, hidráulica y planificación de obras.</p><h4>Habilidades útiles</h4><p>Razonamiento matemático, precisión, organización y trabajo en equipo.</p><h4>¿Dónde puedes trabajar?</h4><p>Constructoras, consultoras, instituciones públicas y proyectos de infraestructura.</p><h4>¿Para quién puede ser adecuada?</h4><p>Para quienes desean diseñar y supervisar edificios, carreteras, puentes y otras obras.</p></div></details></div>
+                <div class="carrera-card"><div class="carrera-card-top"><span class="carrera-card-icono">🎨</span><span class="nivel">Arte y diseño</span></div><h3>Diseño Gráfico</h3><p>Comunicación visual mediante imágenes, ilustraciones y marcas.</p><div class="tags"><span class="tag">Creatividad</span><span class="tag">Comunicación</span></div><details class="carrera-detalles"><summary>Más información sobre la carrera</summary><div class="carrera-info"><h4>¿Qué se estudia?</h4><p>Teoría del color, composición, ilustración, fotografía, tipografía y diseño digital.</p><h4>Habilidades útiles</h4><p>Creatividad, comunicación visual, atención a los detalles y curiosidad.</p><h4>¿Dónde puedes trabajar?</h4><p>Agencias, imprentas, empresas, medios de comunicación o trabajo independiente.</p><h4>¿Para quién puede ser adecuada?</h4><p>Para quienes disfrutan crear imágenes, combinar colores y comunicar ideas visualmente.</p></div></details></div>
+                <div class="carrera-card"><div class="carrera-card-top"><span class="carrera-card-icono">📈</span><span class="nivel">Negocios</span></div><h3>Administración de Empresas</h3><p>Organización de equipos, recursos y proyectos de una organización.</p><div class="tags"><span class="tag">Liderazgo</span><span class="tag">Planificación</span></div><details class="carrera-detalles"><summary>Más información sobre la carrera</summary><div class="carrera-info"><h4>¿Qué se estudia?</h4><p>Administración, economía, contabilidad, marketing, recursos humanos y gestión de proyectos.</p><h4>Habilidades útiles</h4><p>Liderazgo, planificación, comunicación, análisis y toma de decisiones.</p><h4>¿Dónde puedes trabajar?</h4><p>Empresas privadas, instituciones públicas, comercios y emprendimientos propios.</p><h4>¿Para quién puede ser adecuada?</h4><p>Para quienes disfrutan organizar recursos, coordinar equipos y mejorar procesos.</p></div></details></div>
+                <div class="carrera-card"><div class="carrera-card-top"><span class="carrera-card-icono">🔬</span><span class="nivel">Ciencia</span></div><h3>Bioquímica y Farmacia</h3><p>Estudio de sustancias, medicamentos y análisis de laboratorio.</p><div class="tags"><span class="tag">Química</span><span class="tag">Investigación</span></div><details class="carrera-detalles"><summary>Más información sobre la carrera</summary><div class="carrera-info"><h4>¿Qué se estudia?</h4><p>Química, biología, microbiología, análisis clínicos, farmacología y control de calidad.</p><h4>Habilidades útiles</h4><p>Precisión, responsabilidad, observación y gusto por la investigación.</p><h4>¿Dónde puedes trabajar?</h4><p>Laboratorios, hospitales, industria farmacéutica y farmacias, de acuerdo con la titulación.</p><h4>¿Para quién puede ser adecuada?</h4><p>Para quienes se interesan por la química, la biología, los medicamentos y el laboratorio.</p></div></details></div>
+                <div class="carrera-card"><div class="carrera-card-top"><span class="carrera-card-icono">⚖️</span><span class="nivel">Social</span></div><h3>Derecho</h3><p>Estudio de las leyes, la justicia y la resolución de conflictos.</p><div class="tags"><span class="tag">Argumentación</span><span class="tag">Justicia</span></div><details class="carrera-detalles"><summary>Más información sobre la carrera</summary><div class="carrera-info"><h4>¿Qué se estudia?</h4><p>Constitución, leyes civiles, penales, laborales, derechos humanos y procedimientos jurídicos.</p><h4>Habilidades útiles</h4><p>Lectura comprensiva, argumentación, redacción, pensamiento crítico y ética.</p><h4>¿Dónde puedes trabajar?</h4><p>Estudios jurídicos, empresas, instituciones públicas y organizaciones sociales.</p><h4>¿Para quién puede ser adecuada?</h4><p>Para quienes se interesan por la justicia, las normas y la resolución de conflictos.</p></div></details></div>
+                <div class="carrera-card"><div class="carrera-card-top"><span class="carrera-card-icono">📚</span><span class="nivel">Educación</span></div><h3>Ciencias de la Educación</h3><p>Aprendizaje, enseñanza y creación de estrategias educativas.</p><div class="tags"><span class="tag">Enseñanza</span><span class="tag">Paciencia</span></div><details class="carrera-detalles"><summary>Más información sobre la carrera</summary><div class="carrera-info"><h4>¿Qué se estudia?</h4><p>Pedagogía, psicología educativa, planificación, evaluación e investigación educativa.</p><h4>Habilidades útiles</h4><p>Paciencia, empatía, comunicación, creatividad y organización.</p><h4>¿Dónde puedes trabajar?</h4><p>Instituciones educativas, proyectos de capacitación, gestión e investigación educativa.</p><h4>¿Para quién puede ser adecuada?</h4><p>Para quienes desean ayudar a otras personas a aprender y mejorar la educación.</p></div></details></div>
+                <div class="carrera-card"><div class="carrera-card-top"><span class="carrera-card-icono">🌱</span><span class="nivel">Ambiente</span></div><h3>Ingeniería Ambiental</h3><p>Protección de los recursos naturales y solución de problemas ambientales.</p><div class="tags"><span class="tag">Naturaleza</span><span class="tag">Ciencia</span></div><details class="carrera-detalles"><summary>Más información sobre la carrera</summary><div class="carrera-info"><h4>¿Qué se estudia?</h4><p>Ecología, química ambiental, gestión de residuos, tratamiento de aguas y sostenibilidad.</p><h4>Habilidades útiles</h4><p>Observación, análisis, resolución de problemas e interés por la naturaleza.</p><h4>¿Dónde puedes trabajar?</h4><p>Municipios, industrias, consultoras y proyectos de conservación y gestión ambiental.</p><h4>¿Para quién puede ser adecuada?</h4><p>Para quienes desean aplicar ciencia y tecnología a problemas del medioambiente.</p></div></details></div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- =====================================================
+         INSTITUCIONES EDUCATIVAS Y UNIVERSIDADES
+    ====================================================== -->
+    <section id="instituciones" class="seccion seccion-blanca">
+        <div class="seccion-cabecera">
+            <div class="mini-titulo">Continúa tu formación</div>
+            <h2>Instituciones educativas y Universidades</h2>
+            <p>Explora estas instituciones y universidades para conocer sus opciones de formación y carreras.</p>
+        </div>
+        <div class="instituciones-grid">
+
+            <!-- 1. UMSA () -->
+            <article class="institucion-card">
+                <div class="institucion-icono" aria-hidden="true">🏛️</div>
+                <h3>Universidad Mayor de San Andrés (UMSA)</h3>
+                <p>Universidad pública tradicional de La Paz con una amplia oferta académica.</p>
+                <details class="carrera-detalles" style="width: 100%;">
+                    <summary>Ver carreras de la UMSA</summary>
+                    <div class="carrera-info">
+                        <h4>Facultad de Ingeniería</h4>
+                        <p>Ingeniería Civil, Industrial, Mecánica, Informática, Sistemas.</p>
+                        <h4>Ciencias de la Salud</h4>
+                        <p>Medicina, Enfermería, Odontología, Nutrición.</p>
+                        <h4>Ciencias Sociales y Empresariales</h4>
+                        <p>Derecho, Administración de Empresas, Auditoría, Comunicación.</p>
+                    </div>
+                </details>
+                <a class="institucion-enlace" href="https://www.umsa.bo" target="_blank" rel="noopener noreferrer" style="margin-top: 15px;">Visitar sitio web <span aria-hidden="true">↗</span></a>
+            </article>
+
+            <!-- 2. UPEA () -->
+            <article class="institucion-card">
+                <div class="institucion-icono" aria-hidden="true">🎓</div>
+                <h3>Universidad Pública de El Alto (UPEA)</h3>
+                <p>Casa superior de estudios con múltiples carreras de pregrado en El Alto.</p>
+                <details class="carrera-detalles" style="width: 100%;">
+                    <summary>Ver carreras de la UPEA</summary>
+                    <div class="carrera-info">
+                        <h4>Área Ciencia y Tecnología</h4>
+                        <p>Ingeniería de Sistemas, Ing. en Gas y Petroquímica, Ing. Civil, Arquitectura.</p>
+                        <h4>Área Ciencias de la Salud</h4>
+                        <p>Medicina, Enfermería, Odontología, Veterinaria.</p>
+                        <h4>Área Social y Económicas</h4>
+                        <p>Derecho, Ciencias de la Comunicación, Contaduría Pública, Administración.</p>
+                    </div>
+                </details>
+                <a class="institucion-enlace" href="https://www.upea.bo" target="_blank" rel="noopener noreferrer" style="margin-top: 15px;">Visitar sitio web <span aria-hidden="true">↗</span></a>
+            </article>
+
+            <!-- 3.  INSTITUTO BRASIL-BOLIVIA () -->
+            <article class="institucion-card">
+                <div class="institucion-icono" aria-hidden="true">🛠️</div>
+                <h3>Instituto Tecnológico Industrial Brasil-Bolivia (ITIBB)</h3>
+                <p>Conoce las carreras técnicas que ofrece el instituto y revisa la información de cada programa de formación.</p>
+                <a class="institucion-enlace" href="https://itibb.edu.bo/carreras/" target="_blank" rel="noopener noreferrer">Ver carreras <span aria-hidden="true">↗</span></a>
+            </article>
+
+            <!-- 4. TU CEPEAD () -->
+            <article class="institucion-card">
+                <div class="institucion-icono" aria-hidden="true">📚</div>
+                <h3>CEPEAD</h3>
+                <p>Consulta información sobre las alternativas educativas y los programas de formación a distancia del CEPEAD.</p>
+                <a class="institucion-enlace" href="https://cepead.minedu.gob.bo/" target="_blank" rel="noopener noreferrer">Visitar sitio web <span aria-hidden="true">↗</span></a>
+            </article>
+
+            <!-- 5.  EMI () -->
+            <article class="institucion-card">
+                <div class="institucion-icono" aria-hidden="true">🎖️</div>
+                <h3>Escuela Militar de Ingeniería (EMI)</h3>
+                <p>Visita la página de la EMI para informarte sobre su oferta académica y las oportunidades de formación universitaria.</p>
+                <a class="institucion-enlace" href="https://www.emi.edu.bo/" target="_blank" rel="noopener noreferrer">Visitar sitio web <span aria-hidden="true">↗</span></a>
+            </article>
+
+            <!-- 6.  INFOCAL () -->
+            <article class="institucion-card">
+                <div class="institucion-icono" aria-hidden="true">🎓</div>
+                <h3>Infocal La Paz</h3>
+                <p>Visita la página de INFOCAL La Paz para conocer las carreras que te ofrecen</p>
+                <a class="institucion-enlace" href="https://share.google/KnWVQqDTSn3UFQ80B" target="_blank" rel="noopener noreferrer">Visitar sitio web <span aria-hidden="true">↗</span></a>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- =====================================================
+         TEST VOCACIONAL
+         
+         EN LA PARTE 2 COMENZAREMOS A AGREGAR LAS PREGUNTAS
+    ====================================================== -->
+
+    <section id="test" class="seccion">
+
+        <div class="seccion-cabecera">
+
+            <div class="mini-titulo">
+                Test vocacional
+            </div>
+
+            <h2>
+                Descubre tu perfil profesional
+            </h2>
+
+            <p>
+                Responde con sinceridad. No existen respuestas
+                correctas o incorrectas.
+            </p>
+
+        </div>
+
+
+        <div class="test-contenedor">
+
+
+            <div class="test-introduccion">
+
+                <h3>
+                    🧠 Antes de comenzar
+                </h3>
+
+                <p>
+                    Este cuestionario evaluará tus intereses,
+                    habilidades, preferencias, personalidad y
+                    formas de trabajo para generar una orientación
+                    profesional.
+                </p>
+
+
+                <div class="test-info">
+
+                    <div class="test-info-item">
+
+                        <strong>24</strong>
+
+                        <span>
+                            Preguntas
+                        </span>
+
+                    </div>
+
+                    <div class="test-info-item">
+
+                        <strong>6</strong>
+
+                        <span>
+                            Áreas evaluadas
+                        </span>
+
+                    </div>
+
+                    <div class="test-info-item">
+
+                        <strong>5-10</strong>
+
+                        <span>
+                            Minutos
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ENCUESTA -->
+
+            <div class="encuesta">
+
+                <!-- BARRA DE PROGRESO -->
+
+                <div class="barra-test">
+
+                    <div class="barra-test-cabecera">
+
+                        <span id="textoProgreso">
+                            Pregunta 1 de 24
+                        </span>
+
+                        <span id="porcentajeProgreso">
+                            0%
+                        </span>
+
+                    </div>
+
+                    <div class="barra-test-fondo">
+
+                        <div
+                            id="barraProgreso"
+                            class="barra-test-progreso">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Las 24 preguntas se generan con JavaScript -->
+                <div id="contenedorPreguntas" aria-live="polite">
+
+                    <!-- Las preguntas se insertan dinámicamente -->
+
+                </div>
+
+
+                <!-- CONTROLES -->
+
+                <div class="controles-test">
+
+                    <button
+                        type="button"
+                        id="btnAnterior"
+                        class="btn btn-secundario"
+                        onclick="preguntaAnterior()">
+
+                        ← Anterior
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        id="btnSiguiente"
+                        class="btn btn-principal"
+                        onclick="preguntaSiguiente()">
+
+                        Siguiente →
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 RESULTADO DEL TEST
+            ================================================== -->
+
+            <div id="resultado" class="resultado">
+
+                <div class="resultado-cabecera">
+
+                    <div class="resultado-icono">
+                        🎓
+                    </div>
+
+                    <h2>
+                        Tu resultado aparecerá aquí
+                    </h2>
+
+                    <p>
+                        Completa todas las preguntas para obtener
+                        tu orientación vocacional.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PIE DE PÁGINA
+    ====================================================== -->
+
+    <footer
+        style="
+            background:#172554;
+            color:white;
+            padding:40px 5%;
+            text-align:center;
+        ">
+
+        <h3 style="margin-bottom:10px;">
+            🎓 OrientaFuturo
+        </h3>
+
+        <p style="opacity:.75;">
+            Plataforma educativa de orientación vocacional.
+        </p>
+
+        <p
+            style="
+                margin-top:20px;
+                font-size:12px;
+                opacity:.55;
+            ">
+
+            © 2026 OrientaFuturo · Boliviano Cubano
+
+        </p>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT BÁSICO
+         
+         EN LAS SIGUIENTES PARTES SE COMPLETARÁ EL SISTEMA
+    ====================================================== -->
+
+    <script>
+        const areas = {
+            tecnologia: {nombre:'Tecnología e informática', icono:'💻', descripcion:'Te interesan los sistemas, la lógica y resolver problemas con herramientas tecnológicas.', carreras:[['Ingeniería de Sistemas','Programación, software y soluciones digitales.'],['Ingeniería de Telecomunicaciones','Redes, comunicación y transmisión de datos.'],['Informática','Manejo y desarrollo de sistemas informáticos.']]},
+            salud: {nombre:'Salud y bienestar', icono:'🩺', descripcion:'Te motiva cuidar a las personas y contribuir a su bienestar físico o emocional.', carreras:[['Medicina','Prevención y atención de la salud.'],['Enfermería','Cuidado y acompañamiento de pacientes.'],['Psicología','Conducta, emociones y bienestar mental.']]},
+            arte: {nombre:'Arte, diseño y comunicación', icono:'🎨', descripcion:'Disfrutas imaginar, crear, diseñar y expresar ideas de maneras originales.', carreras:[['Diseño Gráfico','Comunicación visual e ilustración.'],['Arquitectura','Diseño de espacios y edificaciones.'],['Comunicación Social','Producción de mensajes y contenidos.']]},
+            negocios: {nombre:'Negocios y gestión', icono:'📈', descripcion:'Te gusta organizar, planificar, tomar decisiones y convertir ideas en proyectos.', carreras:[['Administración de Empresas','Gestión de organizaciones y equipos.'],['Contaduría Pública','Registro, análisis y control financiero.'],['Ingeniería Comercial','Mercados, estrategia y negocios.']]},
+            ciencia: {nombre:'Ciencia e investigación', icono:'🔬', descripcion:'Te interesa investigar, analizar evidencias y comprender cómo funciona el mundo.', carreras:[['Bioquímica y Farmacia','Medicamentos y análisis de laboratorio.'],['Ingeniería Ambiental','Cuidado del ambiente y recursos naturales.'],['Química','Estudio y aplicación de sustancias.']]},
+            social: {nombre:'Sociedad, educación y justicia', icono:'🤝', descripcion:'Te importa colaborar, enseñar, orientar o ayudar a mejorar la sociedad.', carreras:[['Derecho','Leyes, justicia y resolución de conflictos.'],['Ciencias de la Educación','Enseñanza y procesos de aprendizaje.'],['Trabajo Social','Apoyo a personas y comunidades.']]}
+        };
+
+        const preguntas = [
+            {texto:'¿Qué actividad te resulta más interesante?', opciones:[['Resolver problemas con computadoras.','tecnologia'],['Ayudar y orientar a otras personas.','salud'],['Dibujar, diseñar o crear contenido.','arte'],['Organizar proyectos y tomar decisiones.','negocios']]},
+            {texto:'¿Qué materia disfrutas más?', opciones:[['Informática o tecnología.','tecnologia'],['Biología o temas del cuerpo humano.','salud'],['Arte, música o literatura.','arte'],['Matemáticas aplicadas a negocios.','negocios']]},
+            {texto:'Cuando aparece un problema, ¿qué sueles hacer?', opciones:[['Busco una solución lógica o técnica.','tecnologia'],['Pienso en cómo afecta a las personas.','salud'],['Imagino varias ideas diferentes.','arte'],['Organizo pasos para resolverlo.','negocios']]},
+            {texto:'¿Qué proyecto preferirías realizar?', opciones:[['Crear una página web o una aplicación.','tecnologia'],['Participar en una campaña de salud.','salud'],['Diseñar un afiche o video.','arte'],['Dirigir una pequeña empresa.','negocios']]},
+            {texto:'¿Qué te produce más curiosidad?', opciones:[['Cómo funcionan los dispositivos.','tecnologia'],['Cómo funciona el cuerpo y la mente.','salud'],['Cómo se comunican las ideas visualmente.','arte'],['Cómo crecen los negocios.','negocios']]},
+            {texto:'¿En qué ambiente te gustaría trabajar?', opciones:[['En un espacio tecnológico o digital.','tecnologia'],['En un hospital, clínica o centro de bienestar.','salud'],['En un estudio creativo o medio de comunicación.','arte'],['En una empresa o emprendimiento.','negocios']]},
+            {texto:'¿Qué habilidad te gustaría desarrollar más?', opciones:[['Programar y analizar sistemas.','tecnologia'],['Cuidar y acompañar a otros.','salud'],['Crear diseños y contar historias.','arte'],['Liderar equipos y administrar recursos.','negocios']]},
+            {texto:'¿Qué tipo de desafío te atrae?', opciones:[['Encontrar errores en un sistema.','tecnologia'],['Buscar maneras de prevenir enfermedades.','salud'],['Crear una idea que llame la atención.','arte'],['Hacer que un proyecto funcione mejor.','negocios']]},
+            {texto:'¿Qué tema investigarías por gusto?', opciones:[['Inteligencia artificial y aplicaciones.','tecnologia'],['Nutrición, salud o emociones.','salud'],['Diseño, cine o fotografía.','arte'],['Emprendimiento y economía.','negocios']]},
+            {texto:'¿Qué resultado te haría sentir orgulloso?', opciones:[['Una herramienta digital que funcione.','tecnologia'],['Haber mejorado la vida de alguien.','salud'],['Una creación original terminada.','arte'],['Un equipo que logró su objetivo.','negocios']]},
+            {texto:'¿Qué actividad harías durante varias horas?', opciones:[['Resolver ejercicios de lógica o programar.','tecnologia'],['Aprender sobre el cuidado de las personas.','salud'],['Dibujar, editar o escribir.','arte'],['Planificar una actividad o negocio.','negocios']]},
+            {texto:'¿Cómo prefieres demostrar tus ideas?', opciones:[['Con una solución práctica y funcional.','tecnologia'],['Escuchando y acompañando a alguien.','salud'],['Con imágenes, palabras o diseños.','arte'],['Con un plan claro y organizado.','negocios']]},
+            {texto:'¿Qué problema del mundo te gustaría ayudar a resolver?', opciones:[['Acceso a herramientas digitales.','tecnologia'],['Enfermedades y falta de atención.','salud'],['Falta de información y expresión creativa.','arte'],['Falta de empleo u oportunidades económicas.','negocios']]},
+            {texto:'¿Qué tipo de tarea te resulta más cómoda?', opciones:[['Analizar datos y encontrar patrones.','ciencia'],['Escuchar y comprender necesidades.','social'],['Diseñar una presentación llamativa.','arte'],['Coordinar personas y tareas.','negocios']]},
+            {texto:'¿Qué experimento o actividad elegirías?', opciones:[['Probar un programa o robot.','tecnologia'],['Aprender primeros auxilios.','salud'],['Hacer una maqueta o ilustración.','arte'],['Organizar una feria de emprendimientos.','negocios']]},
+            {texto:'¿Qué te gustaría comprender mejor?', opciones:[['Cómo se crean los programas.','tecnologia'],['Cómo prevenir y tratar enfermedades.','salud'],['Cómo influye el diseño en las personas.','arte'],['Cómo se administra el dinero.','negocios']]},
+            {texto:'¿Qué espacio de trabajo te atrae más?', opciones:[['Laboratorio de informática o empresa tecnológica.','tecnologia'],['Centro de salud o consultorio.','salud'],['Taller de diseño o producción audiovisual.','arte'],['Oficina de proyectos o empresa propia.','negocios']]},
+            {texto:'¿Qué te gustaría hacer en un equipo?', opciones:[['Resolver la parte técnica.','tecnologia'],['Apoyar a quienes lo necesitan.','salud'],['Proponer ideas y preparar materiales.','arte'],['Coordinar tareas y tiempos.','negocios']]},
+            {texto:'¿Cuál de estas frases te representa más?', opciones:[['Me gusta descubrir cómo funcionan las cosas.','ciencia'],['Me gusta ayudar y escuchar.','social'],['Me gusta imaginar y crear.','arte'],['Me gusta organizar y alcanzar metas.','negocios']]},
+            {texto:'¿Qué tipo de información disfrutas analizar?', opciones:[['Datos, códigos y sistemas.','tecnologia'],['Información sobre salud y bienestar.','salud'],['Imágenes, mensajes y tendencias culturales.','arte'],['Costos, ventas y resultados.','negocios']]},
+            {texto:'¿Qué causa te gustaría apoyar?', opciones:[['Innovación y acceso a tecnología.','tecnologia'],['Prevención y atención de la salud.','salud'],['Cultura y creatividad.','arte'],['Emprendimiento y desarrollo económico.','negocios']]},
+            {texto:'¿Qué actividad te gustaría aprender desde cero?', opciones:[['Crear una aplicación.','tecnologia'],['Tomar signos vitales y cuidar pacientes.','salud'],['Editar videos o ilustrar.','arte'],['Elaborar un plan de negocio.','negocios']]},
+            {texto:'¿Qué logro te parece más interesante?', opciones:[['Construir una solución tecnológica útil.','tecnologia'],['Contribuir a la recuperación de una persona.','salud'],['Publicar una obra o diseño propio.','arte'],['Hacer crecer un proyecto sostenible.','negocios']]},
+            {texto:'Si pudieras elegir una práctica por una semana, ¿cuál escogerías?', opciones:[['Apoyar en un proyecto informático.','tecnologia'],['Acompañar una actividad de bienestar comunitario.','social'],['Colaborar en una producción creativa.','arte'],['Participar en la gestión de un emprendimiento.','negocios']]}
+        ];
+
+        let preguntaActual = 0;
+        const respuestas = new Array(preguntas.length).fill(null);
+        const contenedor = document.getElementById('contenedorPreguntas');
+        const resultado = document.getElementById('resultado');
+
+        function renderizarPregunta() {
+            const pregunta = preguntas[preguntaActual];
+            contenedor.innerHTML = `<div class="pregunta activa">
+                <span class="numero-pregunta">Pregunta ${preguntaActual + 1}</span>
+                <h3>${pregunta.texto}</h3>
+                <div class="opciones">${pregunta.opciones.map((opcion, i) => `
+                    <label class="opcion">
+                        <input type="radio" name="respuestaActual" value="${opcion[1]}" ${respuestas[preguntaActual] === opcion[1] ? 'checked' : ''}>
+                        <span>${String.fromCharCode(65+i)}. ${opcion[0]}</span>
+                    </label>`).join('')}</div>
+                <p class="mensaje-error" id="mensajeError" hidden>Elige una opción para continuar.</p>
+            </div>`;
+            document.getElementById('btnAnterior').disabled = preguntaActual === 0;
+            document.getElementById('btnSiguiente').textContent = preguntaActual === preguntas.length - 1 ? 'Ver mis resultados ✓' : 'Siguiente →';
+            actualizarProgreso();
+        }
+
+        function actualizarProgreso() {
+            const respondidas = respuestas.filter(Boolean).length;
+            const porcentaje = Math.round((respondidas / preguntas.length) * 100);
+            document.getElementById('textoProgreso').textContent = `Pregunta ${preguntaActual + 1} de ${preguntas.length}`;
+            document.getElementById('porcentajeProgreso').textContent = `${porcentaje}% completado`;
+            document.getElementById('barraProgreso').style.width = `${porcentaje}%`;
+        }
+
+        function preguntaSiguiente() {
+            const seleccion = document.querySelector('input[name="respuestaActual"]:checked');
+            if (seleccion) respuestas[preguntaActual] = seleccion.value;
+            else if (!respuestas[preguntaActual]) {
+                const error = document.getElementById('mensajeError');
+                if (error) error.hidden = false;
+                return;
+            }
+            if (preguntaActual < preguntas.length - 1) {
+                preguntaActual++;
+                renderizarPregunta();
+                document.getElementById('test').scrollIntoView({behavior:'smooth', block:'start'});
+            } else mostrarResultado();
+        }
+
+        function preguntaAnterior() {
+            if (preguntaActual > 0) {
+                const seleccion = document.querySelector('input[name="respuestaActual"]:checked');
+                if (seleccion) respuestas[preguntaActual] = seleccion.value;
+                preguntaActual--;
+                renderizarPregunta();
+            }
+        }
+
+        function mostrarResultado() {
+            const puntuaciones = Object.fromEntries(Object.keys(areas).map(area => [area, 0]));
+            respuestas.forEach(respuesta => { if (respuesta && puntuaciones[respuesta] !== undefined) puntuaciones[respuesta]++; });
+            const ordenadas = Object.entries(puntuaciones).sort((a,b) => b[1] - a[1]);
+            const principal = ordenadas[0];
+            const secundaria = ordenadas[1];
+            const perfil = areas[principal[0]];
+            const perfilSecundario = areas[secundaria[0]];
+            const porcentaje = Math.round((principal[1] / preguntas.length) * 100);
+            resultado.innerHTML = `<div class="resultado-cabecera">
+                <div class="resultado-icono">${perfil.icono}</div>
+                <h2>Tu perfil destacado: ${perfil.nombre}</h2>
+                <p>Esta es una orientación inicial basada en tus respuestas, no una decisión definitiva sobre tu futuro.</p>
+            </div><div class="resultado-cuerpo">
+                <div class="resultado-area"><h3>${perfil.icono} Área principal: ${perfil.nombre}</h3><p>${perfil.descripcion}</p><p><strong>Coincidencia de tus respuestas:</strong> ${porcentaje}% en esta área.</p></div>
+                <div class="resultado-area"><h3>${perfilSecundario.icono} También podrías explorar: ${perfilSecundario.nombre}</h3><p>${perfilSecundario.descripcion}</p></div>
+                <h3>🎓 Carreras que puedes investigar</h3>
+                <div class="resultado-carreras">${perfil.carreras.map(c => `<div class="resultado-carrera"><h4>${c[0]}</h4><p>${c[1]}</p></div>`).join('')}</div>
+                <h3>¿Qué puedes hacer ahora?</h3><p>Revisa el plan de estudios de estas carreras, conversa con profesionales y compara tus intereses con las materias, el tiempo de estudio y las oportunidades laborales.</p>
+                <p><small>Importante: el test no reemplaza la orientación de un profesional. Tus intereses pueden cambiar y puedes combinar varias áreas.</small></p>
+                <div class="resultado-acciones"><button class="btn btn-principal" type="button" onclick="reiniciarTest()">Volver a realizar el test</button><a class="btn btn-secundario" href="#carreras">Explorar carreras</a></div>
+            </div>`;
+            resultado.classList.add('mostrar');
+            document.querySelector('.encuesta').style.display = 'none';
+            resultado.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+
+        function reiniciarTest() {
+            preguntaActual = 0;
+            respuestas.fill(null);
+            resultado.classList.remove('mostrar');
+            document.querySelector('.encuesta').style.display = '';
+            renderizarPregunta();
+            document.getElementById('test').scrollIntoView({behavior:'smooth', block:'start'});
+        }
+
+        document.addEventListener('DOMContentLoaded', renderizarPregunta);
+    </script>
+
+</body>
+</html>
